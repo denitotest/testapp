@@ -1,0 +1,52 @@
+<span id="nav-links">
+
+    <a href="#!b0">link 0</a>
+    <a href="#!b1">link 1</a>
+    <a href="#!b2">link 2</a>
+    <a href="#!b3">link 3</a> 
+
+</span>
+
+<div id='b0'><p>Abstract content abstract.</p></div>
+<div id='b1'><span>introduction content introduction</span></div>
+<div id='b2'><ul><li>tekst</li><li>tekst</li><li>tekst</li><li>tekst</li><li>tekst</li><li>tekst</li><li>tekst</li></ul></div>
+<div id='b3'> mail mail mail span span span span span span span span </div>
+
+
+<script type="text/javascript">
+
+    var links = document.getElementById('nav-links').getElementsByTagName('a');
+    for(var i = 0, link; link = links[i]; i++) {
+        link.onclick = hideshowContent;
+        // Hide content divs by default
+        getContentDiv(link).style.display = 'none';
+    }
+
+    var current;
+
+    function hideshowContent() {
+
+        current = getContentDiv(this);
+
+        if (current.style.display=="block")
+        {
+            current.style.display="none";
+        }
+        else
+        {
+            current.style.display="block";
+        }
+    }
+
+    function getContentDiv(link) {
+
+        var linkTo = link.getAttribute('href');
+
+        // Make sure the link is meant to go to a div
+        if(linkTo.substring(0, 2) != '#!') return;
+        linkTo = linkTo.substring(2);
+
+        return document.getElementById(linkTo);
+    }
+
+</script>​
